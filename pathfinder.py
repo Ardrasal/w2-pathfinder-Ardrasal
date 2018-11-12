@@ -65,7 +65,7 @@ def plot_picture(list):
     #     print(index)
     for y, row in enumerate(scale_elevation(elevation_list)):
         for x, num in enumerate(row):
-            img.putpixel((x,y), (num, num, num))
+            img.putpixel((x, y), (num, num, num))
             img.save('test.png')
 
 
