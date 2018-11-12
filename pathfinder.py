@@ -63,7 +63,7 @@ def plot_picture(list):
     """
     # for index, num in enumerate(row):
     #     print(index)
-    for y, row in enumerate(rgb_number):
+    for y, row in enumerate(scale_elevation(elevation_list)):
         for x, num in enumerate(row):
             img.putpixel((x,y), (num, num, num))
             img.save('test.png')
@@ -75,4 +75,4 @@ elevation_list = clean_elevation(elevation)
 max = find_max(elevation_list)
 min = find_min(elevation_list)
 scale_elevation(elevation_list)
-plot_picture(rgb_number)
+plot_picture(scale_elevation)
