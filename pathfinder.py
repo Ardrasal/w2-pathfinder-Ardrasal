@@ -13,7 +13,6 @@ def open_file(file):
 
 
 def clean_elevation(elevation):
-    
     """
     'Clean_elevation' strips '\n' and separates each number into it's own
     string. 'Elevation_list' turns the strings into integers.
@@ -54,19 +53,44 @@ def scale_elevation(number):
     rgb_number = [[round(int((y) - minimum_point)/(maximum_point -
                    minimum_point) * 255) for y in x] for x in number]
     return rgb_number
-   
+
 
 def plot_picture(list):
     """
     Takes the scaled 'rgb_number'(s) and puts them in x,y format to plot
     picture in greyscale.
     """
-    # for index, num in enumerate(row):
-    #     print(index)
+    img = Image.new("RGB", (600, 600))
     for y, row in enumerate(scale_elevation(elevation_list)):
         for x, num in enumerate(row):
             img.putpixel((x, y), (num, num, num))
-            img.save('test.png')
+    img.save('map.png')
+    img.show('map.png')
+    img = 'map.png'
+    return img
+
+
+def draw_path():
+    """
+    Attempting to draw the first point on the map.
+    """
+    # img = 'map.png'
+    # for x in range(600):
+    #     for y in range(600):
+    #         img.ImageDraw.Draw.point((x, y), (255, 0, 0))
+    # img.save('map_line.png')
+    # img.show('map_line.png')
+
+
+def greedy_walk():
+    """
+    Chooses the next coordinate on the x grid following the greedy path
+    principles.
+    """
+    # go x + 1 (straight line) if x + 1 elevation is equal or less than the
+    #   surrounding y coordinates.
+    # go x + 1 and (y + or - 1) if those have a smaller elevation distance.
+    # if the higher and lower y coordinates are equal, make a random selection.
 
 
 file = 'elevation_small.txt'
@@ -76,3 +100,5 @@ max = find_max(elevation_list)
 min = find_min(elevation_list)
 scale_elevation(elevation_list)
 plot_picture(scale_elevation)
+# draw_path()
+# greedy_walk()
